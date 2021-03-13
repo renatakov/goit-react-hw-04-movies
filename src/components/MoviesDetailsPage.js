@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Route, Link} from "react-router-dom"
+import {Route, Link, Switch} from "react-router-dom"
 import Cast from "./Cast";
 import Reviews from "./Reviews";
 
@@ -40,10 +40,12 @@ class MoviesDetailsPage extends Component {
               })}
             </>
           )}
-          <Route path={this.props.match.path + "/cast"} component={Cast} />
           <Link to={this.props.match.url + '/cast'}>Casts</Link>
-          <Route path={this.props.match.path + "/review"} component={Reviews} />
           <Link to={this.props.match.url + '/review'}>Reviews</Link>
+          <Switch>
+          <Route path={this.props.match.path + "/cast"} component={Cast} />
+          <Route path={this.props.match.path + "/review"} component={Reviews} />
+          </Switch>
         </div>
       </>
     );
